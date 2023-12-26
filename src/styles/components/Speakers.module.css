@@ -1,0 +1,51 @@
+.layout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin: 100px 0;
+}
+
+.content {
+    gap: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    flex-wrap: wrap;
+}
+
+.content p {
+    margin-top: -40px;
+    text-align: center;
+    font-size: 2em;
+    font-weight: 700;
+}
+
+.title {
+    bottom: 20%;
+}
+
+.title2 {
+    top: 20%;
+}
+
+.title,
+.title2 {
+    opacity: .5;
+    position: absolute;
+    z-index: -1;
+}
+
+.title span,
+.title2 span {
+    color: #181818;
+    font-family: "Monument Extended", sans-serif;
+    font-size: 5em;
+    font-weight: 800;
+}
+
+.title span:nth-child(odd),
+.title2 span:nth-child(odd) {
+    color: #eb0028;
+}

@@ -1,0 +1,61 @@
+.layout {
+    margin: 100px 0;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-evenly;
+    gap: 20px;
+    flex-wrap: wrap;
+    max-width: 85vw;
+}
+
+.ticket_card {
+    color: white;
+    width: 23%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px 20px;
+    border-radius: 10px;
+    gap: 15px;
+    font-size: 1.2em;
+    background-color: #eb0028;
+}
+
+.ticket_card h5 {
+    text-align: center;
+    font-family: "Monument Extended";
+    font-size: 1.4em;
+}
+
+.ticket_card p {
+    font-size: .7em;
+    text-align: center;
+    padding: 10px;
+}
+
+.sold_tag,
+.avail_tag {
+    border-radius: 20px;
+    padding: 5px 15px;
+    color: white;
+}
+
+.sold_tag {
+    background-color: #F9CA3E;
+}
+
+.avail_tag {
+    background-color: #84BD2B;
+}
+
+.price_tag {
+    margin-bottom: 10px;
+    font-size: 2em;
+    display: flex;
+    gap: 5px;
+}
+
+.price_tag span {
+    font-size: .5em;
+}

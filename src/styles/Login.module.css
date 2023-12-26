@@ -1,0 +1,25 @@
+.layout {
+    width: 100vw;
+    height: 85vh;
+    background-image: url('https://res.cloudinary.com/delq31bnx/image/upload/v1703572567/event_fmfu3t.jpg');
+    display: flex;
+    color: white;
+    position: relative;
+}
+
+.banner {
+    width: 60%;
+    display: flex;
+    align-items: flex-end;
+    padding: 40px;
+}
+
+.banner h2 {
+    font-family: "Monument Extended";
+    font-size: 4em;
+    line-height: .8em;
+}
+
+.banner h2 strong {
+    font-family: "Monument Extended";
+}

@@ -1,0 +1,12 @@
+.layout {
+    align-items: center;
+    justify-content: space-evenly;
+    display: flex;
+    margin: 150px 0;
+}
+
+.content p {
+    font-size: 4.5em;
+    font-family: "Monument Extended";
+    line-height: .8em;
+}

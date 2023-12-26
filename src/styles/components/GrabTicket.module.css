@@ -1,0 +1,43 @@
+.layout {
+    align-items: center;
+    justify-content: space-evenly;
+    display: flex;
+    margin: 150px 0 100px 0;
+}
+
+.content {
+    background-image: url('https://res.cloudinary.com/delq31bnx/image/upload/v1703572567/event_fmfu3t.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    min-height: 300px;
+    width: 80vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 30px;
+    border-radius: 20px;
+}
+
+.cta {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    color: white;
+}
+
+.content:before {
+    content: " ";
+    position: absolute;
+    height: 300px;
+    width: 300px;
+    top: -60%;
+    left: -10vw;
+    transform: rotate(0deg);
+    background-image: url('https://res.cloudinary.com/delq31bnx/image/upload/v1703572566/butterfly2_qtiyzm.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}

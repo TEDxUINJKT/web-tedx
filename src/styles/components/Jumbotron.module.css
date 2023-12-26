@@ -1,0 +1,117 @@
+.jumbotron {
+    min-height: 100vh;
+    background-color: black;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: .9;
+}
+
+.roller_text {
+    top: 25%;
+    z-index: 1;
+    position: absolute;
+}
+
+.roller_text2 {
+    bottom: 25%;
+    z-index: 1;
+    position: absolute;
+}
+
+.roller_text span,
+.roller_text2 span {
+    /* CHANGER */
+    color: white;
+    font-family: "Monument Extended", sans-serif;
+    font-size: 7em;
+    font-weight: 800;
+}
+
+.roller_text span:nth-child(odd),
+.roller_text2 span:nth-child(even) {
+    color: #eb0028;
+}
+
+.outline_mask {
+    width: 100vw;
+    height: 80vh;
+    left: 0;
+    position: absolute;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.img_mask {
+    width: 100vw;
+    height: 80vh;
+    left: 0;
+    position: absolute;
+    background-image: url('https://res.cloudinary.com/delq31bnx/image/upload/v1703572570/butterflybw_yyfegh.png');
+    filter: brightness(70%);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    mask-image: url('https://res.cloudinary.com/delq31bnx/image/upload/v1703572570/butterflybw_yyfegh.png');
+    mask-repeat: no-repeat;
+    mask-size: contain;
+    mask-position: center;
+    z-index: 5;
+
+}
+
+.img_mask .roller_text,
+.img_mask .roller_text2 {
+    -webkit-text-stroke: 2px white;
+    -webkit-text-fill-color: transparent;
+
+}
+
+.img_mask .roller_text span:nth-child(odd),
+.img_mask .roller_text2 span:nth-child(even) {
+    -webkit-text-stroke: 2px #eb0028;
+    -webkit-text-fill-color: transparent;
+}
+
+.layer_img {
+    position: absolute;
+    z-index: 2;
+    max-height: 70vh;
+}
+
+.video {
+    filter: brightness(50%);
+    opacity: .5;
+    z-index: 0;
+    object-fit: cover;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.jumbotron::after {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    content: "v 2 . 0";
+    /* CHANGER */
+    background-color: white;
+    color: #181818;
+    /* background-color: #181818;
+    color: white; */
+    width: 150px;
+    height: 50px;
+    bottom: 0;
+    position: absolute;
+    z-index: 5;
+    left: 5%;
+    transform: perspective(10px) rotateX(3deg);
+}

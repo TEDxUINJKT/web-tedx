@@ -1,0 +1,23 @@
+.footer {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 50px;
+}
+
+.footer span {
+    color: #181818 !important;
+    font-weight: 500;
+}
+
+.socmed_list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+a {
+    display: flex;
+}

@@ -1,0 +1,26 @@
+.layout {
+    align-items: center;
+    justify-content: space-evenly;
+    display: flex;
+    margin: 150px 0;
+    flex-direction: column;
+    position: relative;
+    gap: 50px;
+}
+
+.title span {
+    font-size: 4.5em;
+    font-family: "Monument Extended";
+    line-height: .8em;
+}
+
+.title {
+    position: relative;
+}
+
+.float_version {
+    position: absolute !important;
+    top: -15%;
+    right: 20%;
+    transform: rotate(15deg);
+}
