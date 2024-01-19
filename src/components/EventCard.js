@@ -1,14 +1,16 @@
 import { axiosInstance } from "../lib/axios";
 import { useState, useEffect } from "react";
-import Button from "./Button";
+// import Button from "./Button";
 import style from "../styles/components/EventCard.module.css";
 import { MdLocationOn, MdAccessTimeFilled } from "react-icons/md";
 import { BsCalendarDateFill } from "react-icons/bs";
-// import { Link } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
+// import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function EventCard() {
   const [events, setEvents] = useState([]);
-
+  // const navigate = useNavigate();
   const fetchEvents = async () => {
     try {
       const eventsResponse = await axiosInstance.get("/event/2");
@@ -49,7 +51,9 @@ export default function EventCard() {
               </span>
             </div>
             <p>{event.description}</p>
-            <Button id={event._id} />
+            <Link to={`/ticket/${event._id}`}>
+              <button>GET TICKET</button>
+            </Link>
           </div>
           <div className={style.thumb}>
             <img src={event.thumbnail.url} alt="event" width="100%" />

@@ -1,12 +1,50 @@
-import { Link } from "react-router-dom";
-// import { useState, useEffect } from 'react'
-// import { axiosInstance } from '../lib/axios'
+// import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { axiosInstance } from "../lib/axios";
+import { useParams } from "react-router-dom";
 import style from "../styles/components/TicketCard.module.css";
 
 export default function TicketCard() {
-  return (
-    <section className={style.layout}>
-      <div className={style.ticket_card}>
+  const [tickets, setTicket] = useState([]);
+  const { ticket_id } = useParams();
+
+  useEffect(() => {
+    const getTicket = async () => {
+      try {
+        const ticketResponse = await axiosInstance.get(
+          `event/ticket/${ticket_id}`
+        );
+        const responseData = ticketResponse.data;
+        const { status } = responseData;
+        if (status === 200) {
+          setTicket(responseData.tickets);
+          console.log(responseData.tickets);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getTicket();
+  }, [ticket_id]);
+
+  const renderTicket = () => {
+    return tickets.map((ticket) => {
+      return (
+        <section className={style.layout} key={ticket._id}>
+          <div className={style.ticket_card}>
+            <h5>{ticket.type_ticket}</h5>
+            <p>{ticket.description}</p>
+            <span className={style.price_tag}>
+              <span>IDR</span> {ticket.price}
+            </span>
+            <button>BUY NOW</button>
+          </div>
+        </section>
+      );
+    });
+  };
+  return renderTicket();
+  /* <div className={style.ticket_card}>
         <h5>EARLY BIRD</h5>
         <p>
           🌟 Seize the Worm! 🌅 Grab your Early Bird ticket now and unlock the
@@ -92,7 +130,5 @@ export default function TicketCard() {
           <span>IDR</span> 55,000
         </span>
         <button className="btn_disable">BUY NOW</button>
-      </div>
-    </section>
-  );
+      </div> */
 }

@@ -7,23 +7,26 @@ import { BsCalendarDateFill } from "react-icons/bs";
 
 import { useEffect, useState } from "react";
 import { axiosInstance } from "../lib/axios";
-import { useCallback } from "react";
+// import { useCallback } from "react";
+import { useParams } from "react-router-dom";
 
-export default function DetailTicket(id) {
-  const [eventCard, setEventCard] = useState([]);
-  id = eventCard._id;
+export default function DetailTicket() {
+  const { event_id } = useParams();
+  const [eventCard, setEventCard] = useState(null);
+  // id = eventCard._id;
 
   useEffect(() => {
     const getEventCard = async () => {
       try {
         const eventCardResponse = await axiosInstance.get(
-          `/event/detail/${id}`
+          `/event/detail/${event_id}`
         );
         const responseData = eventCardResponse.data;
         const { status } = responseData;
         console.log(responseData);
         if (status === 200) {
           setEventCard(responseData.detail);
+          console.log(setEventCard);
         }
       } catch (error) {
         console.log(error);
@@ -31,17 +34,19 @@ export default function DetailTicket(id) {
     };
 
     getEventCard();
-  }, [id]);
+  }, [event_id]);
 
-  const renderLink = useCallback(() => {
-    console.log(eventCard);
+  const renderEventCard = () => {
+    if (!eventCard) {
+      return null; // Return early if eventCard is still empty
+    }
     return (
       <div
         className={style.card}
         style={{ marginTop: "150px" }}
         key={eventCard._id}>
         <div className={style.content}>
-          <h3>{eventCard}</h3>
+          <h3>{eventCard.event}</h3>
           <div className={style.detail_content}>
             <span>{eventCard.type}</span>
             <span>
@@ -64,7 +69,7 @@ export default function DetailTicket(id) {
         </div>
       </div>
     );
-  }, [eventCard]);
+  };
 
   return (
     <section style={{ padding: "100px 0 0 0" }}>
@@ -75,7 +80,7 @@ export default function DetailTicket(id) {
           <span aria-hidden="true">TICKET LIST</span>
         </h1>
       </div>
-      {renderLink()}
+      {renderEventCard()}
       {/* <div className={style.card} style={{ marginTop: "150px" }}>
         <div className={style.content}>
           <h3>TEDxUINJakarta 2.0</h3>
