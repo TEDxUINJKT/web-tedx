@@ -6,6 +6,18 @@
     font-display: swap;
 }
 
+@font-face {
+    font-family: "ITC";
+    src: url("../assets/font/ITCEDSCR.TTF");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Mikela";
+    src: url("../assets/font/Mikela.otf");
+    font-display: swap;
+}
+
 * {
     padding: 0;
     margin: 0;
@@ -129,8 +141,8 @@ input::placeholder {
 
 /* GLITCH */
 .glitch {
-    font-size: 4em;
-    font-family: "Monument Extended";
+    font-size: 6em;
+    font-family: "Mikela";
     text-align: center;
     position: relative;
     display: inline-block;
@@ -142,7 +154,7 @@ input::placeholder {
 
 .glitch span {
     font-size: 1em;
-    font-family: "Monument Extended";
+    font-family: "Mikela";
     position: absolute;
     top: 0;
     left: 0;
@@ -160,6 +172,10 @@ input::placeholder {
     clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
     transform: translate(0.04em, 0.03em);
     opacity: 0.75;
+}
+
+.mobile {
+    display: none;
 }
 
 @keyframes glitch {
@@ -196,5 +212,29 @@ input::placeholder {
     100% {
         text-shadow: -0.05em 0 0 #00fffc, -0.025em -0.04em 0 #fc00ff,
             -0.04em -0.025em 0 #fffc00;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    * {
+        font-size: 12px;
+    }
+
+    .mobile {
+        display: block
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    * {
+        font-size: 10px;
+    }
+
+    .glitch {
+        font-size: 5em;
+    }
+
+    .pc {
+        display: none;
     }
 }

@@ -16,7 +16,7 @@ export default function Jumbotron() {
         const content = res.content;
 
         if (status === 200) {
-          setBanner(content);
+          setBanner(content.data.image.url);
           console.log(content);
         }
       } catch (error) {
@@ -26,10 +26,6 @@ export default function Jumbotron() {
 
     fetchBanner();
   }, []);
-
-  //   const backgroundImage = {
-  //     backgroundImage: banner.data.image.url,
-  //   };
 
   const handleScroll = () => {
     setScrollY(window.pageYOffset);
@@ -47,7 +43,7 @@ export default function Jumbotron() {
       <div className={style.img_mask}>
         <div
           className={style.roller_text}
-          style={{ transform: `translateX(${-scrollY / 25}%)` }}>
+          style={{ transform: `translateX(${-scrollY / 30}%)` }}>
           <span>TEDx</span>
           <span>UINJAKARTA</span>
           <span>TEDx</span>
@@ -57,7 +53,7 @@ export default function Jumbotron() {
         </div>
         <div
           className={style.roller_text2}
-          style={{ transform: `translateX(${scrollY / 25}%)` }}>
+          style={{ transform: `translateX(${scrollY / 30}%)` }}>
           <span>UINJAKARTA</span>
           <span>TEDx</span>
           <span>UINJAKARTA</span>
@@ -69,7 +65,7 @@ export default function Jumbotron() {
       <div className={style.outline_mask}>
         <div
           className={style.roller_text}
-          style={{ transform: `translateX(${-scrollY / 25}%)` }}>
+          style={{ transform: `translateX(${-scrollY / 30}%)` }}>
           <span>TEDx</span>
           <span>UINJAKARTA</span>
           <span>TEDx</span>
@@ -79,7 +75,7 @@ export default function Jumbotron() {
         </div>
         <div
           className={style.roller_text2}
-          style={{ transform: `translateX(${scrollY / 25}%)` }}>
+          style={{ transform: `translateX(${scrollY / 30}%)` }}>
           <span>UINJAKARTA</span>
           <span>TEDx</span>
           <span>UINJAKARTA</span>
@@ -88,8 +84,7 @@ export default function Jumbotron() {
           <span>TEDx</span>
         </div>
       </div>
-      {/* {renderBanner()} */}
-      {/* <img className={style.layer_img} src={butterfly} alt="butterfly.png" /> */}
+      <img className={style.layer_img} src={banner} alt="butterfly.png" />
       <video
         className={style.video}
         width="100%"

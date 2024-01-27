@@ -17,7 +17,6 @@ export default function Timeline() {
 
         if (status === 200) {
           setTimeline(content);
-          console.log(content);
         }
       } catch (error) {
         console.log(error);
@@ -35,6 +34,7 @@ export default function Timeline() {
       <img src={timeline.data.image.url} alt="timeline" key={timeline._id} />
     );
   };
+
   return (
     <section className={style.layout}>
       <div className={style.title}>

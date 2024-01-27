@@ -15,7 +15,7 @@ export default function GrabTicket() {
                     <Link to="/ticket">
                         <button>BUY TICKET</button>
                     </Link>
-                    <span>OR</span>
+                    <span className="pc">OR</span>
                     <Link to="/event">
                         <button>OUR SCHEDULE</button>
                     </Link>

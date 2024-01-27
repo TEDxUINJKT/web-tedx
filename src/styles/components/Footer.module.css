@@ -21,3 +21,13 @@
 a {
     display: flex;
 }
+
+@media only screen and (max-width: 600px) {
+    .footer {
+        background-color: white;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 10px;
+    }
+}

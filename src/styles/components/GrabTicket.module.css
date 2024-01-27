@@ -41,3 +41,17 @@
     background-position: center;
     background-repeat: no-repeat;
 }
+
+@media only screen and (max-width: 600px) {
+
+    .cta {
+        gap: 10px;
+    }
+
+    .content:before {
+        height: 300px;
+        width: 300px;
+        top: -60%;
+        left: -30%;
+    }
+}
