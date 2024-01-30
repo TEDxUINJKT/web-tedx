@@ -43,7 +43,7 @@ export default function Jumbotron() {
       <div className={style.img_mask}>
         <div
           className={style.roller_text}
-          style={{ transform: `translateX(${-scrollY / 30}%)` }}>
+          style={{ transform: `translateX(${-scrollY / 20}%)` }}>
           <span>TEDx</span>
           <span>UINJAKARTA</span>
           <span>TEDx</span>
@@ -53,7 +53,7 @@ export default function Jumbotron() {
         </div>
         <div
           className={style.roller_text2}
-          style={{ transform: `translateX(${scrollY / 30}%)` }}>
+          style={{ transform: `translateX(${scrollY / 20}%)` }}>
           <span>UINJAKARTA</span>
           <span>TEDx</span>
           <span>UINJAKARTA</span>
@@ -65,7 +65,7 @@ export default function Jumbotron() {
       <div className={style.outline_mask}>
         <div
           className={style.roller_text}
-          style={{ transform: `translateX(${-scrollY / 30}%)` }}>
+          style={{ transform: `translateX(${-scrollY / 20}%)` }}>
           <span>TEDx</span>
           <span>UINJAKARTA</span>
           <span>TEDx</span>
@@ -75,7 +75,7 @@ export default function Jumbotron() {
         </div>
         <div
           className={style.roller_text2}
-          style={{ transform: `translateX(${scrollY / 30}%)` }}>
+          style={{ transform: `translateX(${scrollY / 20}%)` }}>
           <span>UINJAKARTA</span>
           <span>TEDx</span>
           <span>UINJAKARTA</span>

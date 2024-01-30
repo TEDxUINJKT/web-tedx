@@ -2,6 +2,8 @@ import style from "../styles/components/Theme.module.css";
 import { useEffect, useState } from "react";
 import { axiosInstance } from "../lib/axios";
 
+import Theme_img from '../assets/theme.png';
+
 export default function Theme() {
   const [theme, setTheme] = useState(null);
 
@@ -32,27 +34,13 @@ export default function Theme() {
     return (
       <div id="theme">
         <section className={style.layout} key={theme._id}>
+          <img src={Theme_img} alt="theme" width="80%" height="auto" />
           <div className={style.title}>
-            <span>{theme.data.title}</span>
-            <h2 style={{ color: "#eb0028" }}>GRAND THEME</h2>
+            <p style={{ color: "#eb0028" }}>GRAND THEME</p>
+            <span >{theme.data.title}</span>
           </div>
           <div className={style.content}>
             <p>{theme.data.description}</p>
-          </div>
-          <div className={style.sub_theme_list}>
-            <button>PERFECT METAMORPHOSIS</button>
-            <button>ANOTHER SIDE OF WINGS</button>
-            <button>POLLINATION FANTASIA</button>
-          </div>
-          <div className={style.images_layout}>
-            <img
-              src="https://res.cloudinary.com/delq31bnx/image/upload/v1703572568/hand_bf2_nepfle.png"
-              alt="hand 1"
-            />
-            <img
-              src="https://res.cloudinary.com/delq31bnx/image/upload/v1703572570/hand_bf5_xty9io.png"
-              alt="hand 1"
-            />
           </div>
         </section>
       </div>

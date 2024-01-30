@@ -2,7 +2,7 @@ import Theme from '../components/Theme'
 
 export default function About() {
     return (
-        <section style={{ padding: '100px 0' }}>
+        <section className="page-container">
             <div style={{ textAlign: 'center' }}>
                 <h1 className="glitch">
                     <span aria-hidden="true">ABOUT</span>

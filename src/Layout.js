@@ -12,10 +12,10 @@ export default function Layout({ children }) {
     }, [pathname]);
 
     const style = {
-        marginTop: '75px',
+        paddingTop: '75px',
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'center'
+        alignItems: 'center',
     }
 
     return (

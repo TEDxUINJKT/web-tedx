@@ -1,5 +1,5 @@
 .layout {
-    margin: 100px 0;
+    margin: 50px 0 100px 0;
     display: flex;
     align-items: stretch;
     justify-content: space-evenly;
@@ -24,12 +24,13 @@
 
 .ticket_card h5 {
     text-align: center;
-    font-family: "Monument Extended";
-    font-size: 1.4em;
+    font-family: "Mikela";
+    font-size: 2.5em;
+    font-weight: normal;
 }
 
 .ticket_card p {
-    font-size: .7em;
+    font-size: .8em;
     text-align: center;
     padding: 10px;
 }
@@ -54,8 +55,30 @@
     font-size: 2em;
     display: flex;
     gap: 5px;
+    font-weight: 500;
 }
 
 .price_tag span {
     font-size: .5em;
+}
+
+@media only screen and (max-width: 600px) {
+    .layout {
+        margin: 50px 0;
+        display: flex;
+        align-items: stretch;
+        justify-content: space-evenly;
+        gap: 20px;
+        flex-wrap: wrap;
+        max-width: 85vw;
+    }
+
+    .ticket_card {
+        width: 100%;
+        gap: 0;
+    }
+
+    .ticket_card h5 {
+        font-size: 5em;
+    }
 }

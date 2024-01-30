@@ -13,15 +13,11 @@ export default function PartnerContact() {
                 </p>
                 <div className={style.cta}>
                     <Link to="/ticket">
-                        <button>
-                            EMAIL
-                        </button>
+                        <button>EMAIL</button>
                     </Link>
-                    <span>OR</span>
+                    <span className="pc">OR</span>
                     <Link to="/event">
-                        <button>
-                            WHATSAPP
-                        </button>
+                        <button>WHATSAPP</button>
                     </Link>
                 </div>
             </div>

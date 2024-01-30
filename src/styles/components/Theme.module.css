@@ -1,5 +1,5 @@
 .layout {
-    margin: 150px 0;
+    margin-top: 100px;
     align-items: center;
     justify-content: space-evenly;
     display: flex;
@@ -9,14 +9,19 @@
 }
 
 .title span,
-.title h2 {
+.title p {
+    display: block;
     text-align: center;
-    font-size: 4.5em;
+    font-size: 7em;
     line-height: 1em;
 }
 
-.title h2 {
-    font-family: "Monument Extended";
+.title p {
+    font-family: "Mikela";
+}
+
+.title span {
+    font-family: "ITC";
 }
 
 .content {
@@ -28,22 +33,26 @@
     font-size: 1.1em;
 }
 
-.sub_theme_list {
-    display: flex;
-    gap: 20px;
-}
+@media only screen and (max-width: 600px) {
+    .layout {
+        margin-top: 50px;
+    }
 
-.images_layout {
-    position: absolute;
-    z-index: -1;
-    width: 100vw;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    opacity: .65;
-    bottom: 0%;
-}
+    .layout img {
+        width: 100%;
+    }
 
-.images_layout img {
-    filter: grayscale(100%) brightness(77%) contrast(158%);
+    .content,
+    .title {
+        max-width: 90%;
+    }
+
+    .title p {
+        margin-bottom: 20px;
+    }
+
+    .title p,
+    .title span {
+        font-size: 5em;
+    }
 }

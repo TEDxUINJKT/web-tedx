@@ -33,8 +33,6 @@ export default function Trailer() {
       <iframe
         key={teaser._id}
         style={{ borderRadius: "10px" }}
-        width="560"
-        height="315"
         src={teaser.data.link}
         title="YouTube video player"
         frameborder="0"
@@ -49,7 +47,9 @@ export default function Trailer() {
         <p>MAIN EVENT</p>
         <p style={{ color: "#eb0028" }}>TEASER</p>
       </div>
-      {renderTeaser()}
+      <div className={style.video}>
+        {renderTeaser()}
+      </div>
     </section>
   );
 }

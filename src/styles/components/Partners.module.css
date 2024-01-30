@@ -1,17 +1,37 @@
 .layout {
     align-items: center;
     justify-content: space-evenly;
+    flex-direction: column;
     display: flex;
     margin: 100px 0;
     gap: 50px;
 }
 
 .content {
-    max-width: 40vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 90vw;
+    text-align: center;
+}
+
+.content p {
+    max-width: 50%;
+    text-align: center;
 }
 
 .content span {
-    font-size: 4.5em;
-    font-family: "Monument Extended";
+    font-size: 7em;
+    font-family: "Mikela";
     line-height: .8em;
+}
+
+@media only screen and (max-width: 600px) {
+    .content span {
+        font-size: 6em;
+    }
+
+    .content p {
+        max-width: 90%;
+    }
 }

@@ -8,23 +8,28 @@
 }
 
 .card {
-    height: 300px;
+    height: fit-content;
     color: white;
     border-radius: 10px;
     display: flex;
-    align-items: center;
+    align-items: stretch;
     justify-content: space-between;
     width: 85vw;
     background-color: #181818;
     overflow: hidden;
+    padding: 30px;
+    gap: 30px;
 }
 
 .thumb {
+    background-position: center;
+    background-size: cover;
     max-width: 40%;
+    min-width: 40%;
+    border-radius: 5px;
 }
 
 .content {
-    padding: 30px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -33,6 +38,7 @@
 
 .content p {
     margin: 20px 0 10px 0;
+    text-align: justify;
     font-size: .9em;
 }
 
@@ -47,7 +53,7 @@
 
 .detail_content span {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 5px;
     padding: 5px 10px;
     border-radius: 15px;
@@ -58,4 +64,54 @@
 .detail_content span:nth-child(1) {
     background-color: #AAA9A5;
     color: #181818;
+}
+
+@media only screen and (max-width: 600px) {
+    .card {
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        padding: 25px;
+        flex-wrap: wrap-reverse;
+    }
+
+    .detail_content {
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .detail_content span {
+        justify-content: flex-start;
+        padding: 5px 0;
+    }
+
+    .detail_content span:nth-child(1) {
+        padding: 5px 10px;
+    }
+
+    .thumb {
+        background-position: center;
+        background-size: cover;
+        max-width: 100%;
+        min-width: 100%;
+        min-height: 150px;
+        border-radius: 5px;
+    }
+
+    .content {
+        justify-content: center;
+        gap: 16px;
+    }
+
+    .content p {
+        margin: 0;
+    }
+
+    .content h3 {
+        font-size: 1.6em;
+    }
+
+    .layout {
+        margin: 100px 0;
+    }
 }

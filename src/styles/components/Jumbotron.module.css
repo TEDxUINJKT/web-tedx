@@ -7,18 +7,21 @@
   align-items: center;
   justify-content: center;
   opacity: 0.9;
+  overflow: hidden;
 }
 
 .roller_text {
   top: 15%;
   z-index: 1;
   position: absolute;
+  transition: .3s;
 }
 
 .roller_text2 {
   bottom: 15%;
   z-index: 1;
   position: absolute;
+  transition: .3s;
 }
 
 .roller_text span,
@@ -135,6 +138,6 @@
   }
 
   .jumbotron::after {
-    left: 35%;
+    left: 10%;
   }
 }

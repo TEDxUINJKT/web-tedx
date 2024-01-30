@@ -1,6 +1,8 @@
 import Speakers from "../components/Speakers";
 import EventCard from "../components/EventCard";
 
+import Flayer from '../assets/gallery_bnw.jpg'
+
 export default function Event() {
   // const [speakers, setspeakers] = useState([]);
 
@@ -37,7 +39,7 @@ export default function Event() {
   //   });
   // };
   return (
-    <section style={{ padding: "100px 0 0 0" }}>
+    <section className="page-container-no-bottom">
       <div style={{ textAlign: "center" }}>
         <h1 className="glitch">
           <span aria-hidden="true">EVENT</span>
@@ -45,11 +47,14 @@ export default function Event() {
           <span aria-hidden="true">EVENT</span>
         </h1>
       </div>
-      <Speakers />
+      <Speakers type="main" />
+      <Speakers type="student" />
       <EventCard />
       <img
-        src="https://res.cloudinary.com/delq31bnx/image/upload/v1703572567/gallery_bnw_hcxvsy.jpg"
+        src={Flayer}
         alt="gallery event"
+        width="100%"
+        height="auto"
       />
     </section>
   );

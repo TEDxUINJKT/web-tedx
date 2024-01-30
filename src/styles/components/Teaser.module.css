@@ -5,6 +5,18 @@
     margin: 150px 0;
 }
 
+.video {
+    width: 40vw;
+    display: flex;
+    justify-content: center;
+    height: 100%;
+}
+
+.video iframe {
+    width: 70%;
+    height: 200px;
+}
+
 .content p {
     font-size: 7em;
     font-family: "Mikela";
@@ -22,7 +34,11 @@
         max-width: 90vw;
     }
 
-    .layout iframe {
-        max-width: 80vw;
+    .video {
+        width: 90vw;
+    }
+
+    .video iframe {
+        width: 90%;
     }
 }

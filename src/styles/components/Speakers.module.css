@@ -22,6 +22,13 @@
     font-weight: 700;
 }
 
+.speaker {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    max-width: 25vw;
+}
+
 .title {
     bottom: 20%;
 }
@@ -40,12 +47,38 @@
 .title span,
 .title2 span {
     color: #181818;
-    font-family: "Monument Extended", sans-serif;
-    font-size: 5em;
-    font-weight: 800;
+    font-family: "Mikela", sans-serif;
+    font-size: 7em;
 }
 
 .title span:nth-child(odd),
 .title2 span:nth-child(odd) {
     color: #eb0028;
+}
+
+@media only screen and (max-width: 600px) {
+    .content {
+        gap: 10px;
+    }
+
+    .speaker {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        max-width: 28vw;
+    }
+
+    .speaker img {
+        width: 100%;
+    }
+
+    .speaker p {
+        font-size: 1.2em;
+        line-height: 1em;
+    }
+
+    .title span,
+    .title2 span {
+        font-size: 3em;
+    }
 }

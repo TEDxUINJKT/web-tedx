@@ -6,9 +6,6 @@ export default function Login() {
             <div className={style.banner}>
                 <h2>WELCOME TO <strong>TEDX</strong>UINJAKARTA</h2>
             </div>
-            {/* <div className={style.form}>
-                <h2>LOGIN</h2>
-            </div> */}
         </section>
     )
 }

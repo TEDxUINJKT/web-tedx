@@ -55,8 +55,7 @@ export default function EventCard() {
               <button>GET TICKET</button>
             </Link>
           </div>
-          <div className={style.thumb}>
-            <img src={event.thumbnail.url} alt="event" width="100%" />
+          <div className={style.thumb} style={{ backgroundImage: `url(${event.thumbnail.url})` }}>
           </div>
         </div>
       );

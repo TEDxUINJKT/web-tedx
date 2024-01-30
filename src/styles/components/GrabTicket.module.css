@@ -28,30 +28,10 @@
     color: white;
 }
 
-.content:before {
-    content: " ";
-    position: absolute;
-    height: 300px;
-    width: 300px;
-    top: -60%;
-    left: -10vw;
-    transform: rotate(0deg);
-    background-image: url('https://res.cloudinary.com/delq31bnx/image/upload/v1703572566/butterfly2_qtiyzm.png');
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-}
 
 @media only screen and (max-width: 600px) {
 
     .cta {
         gap: 10px;
-    }
-
-    .content:before {
-        height: 300px;
-        width: 300px;
-        top: -60%;
-        left: -30%;
     }
 }

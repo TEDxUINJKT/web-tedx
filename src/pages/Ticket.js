@@ -2,7 +2,7 @@ import EventCard from '../components/EventCard'
 
 export default function Ticket() {
     return (
-        <section style={{ padding: '100px 0 0 0' }}>
+        <section className="page-container-no-bottom">
             <div style={{ textAlign: 'center' }}>
                 <h1 className="glitch">
                     <span aria-hidden="true">TICKET</span>

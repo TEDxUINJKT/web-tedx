@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import style from "../styles/components/Speakers.module.css";
 import { axiosInstance } from "../lib/axios";
-export default function Speakers() {
+export default function Speakers({ type }) {
   const [speakersMain, setspeakersMain] = useState([]);
 
-  const fetchSpeakersMain = async () => {
+  const fetchSpeakersMain = async (speaker_type) => {
     try {
-      const speakersMain = await axiosInstance.get("/speaker/2/main");
+      const speakersMain = await axiosInstance.get(`/speaker/2/${speaker_type}`);
       const responseData = speakersMain.data;
       const { status } = responseData;
 
@@ -19,8 +19,8 @@ export default function Speakers() {
   };
 
   useEffect(() => {
-    fetchSpeakersMain();
-  }, []);
+    fetchSpeakersMain(type);
+  }, [type]);
 
   const renderSpeakersMain = () => {
     return speakersMain.map((speaker) => {
@@ -29,7 +29,6 @@ export default function Speakers() {
           <img
             src={speaker.picture.url}
             alt={speaker.full_name}
-            width="350px"
           />
           <p>{speaker.full_name}</p>
         </div>
@@ -40,58 +39,19 @@ export default function Speakers() {
     <section className={style.layout}>
       <div className={style.content}>
         {renderSpeakersMain()}
-        {/* <div className={style.speaker}>
-          <img
-            src="https://res.cloudinary.com/delq31bnx/image/upload/v1703572571/speaker2_ikz1ra.png"
-            alt="speaker 1"
-            width="350px"
-          />
-          <p>HARRY MAGUIRE</p>
-        </div>
-        <div className={style.speaker}>
-          <img
-            src="https://res.cloudinary.com/delq31bnx/image/upload/v1703572568/speaker1_c7rhdu.png"
-            alt="speaker 2"
-            width="350px"
-          />
-          <p>JOKO WIDODO</p>
-        </div>
-        <div className={style.speaker}>
-          <img
-            src="https://res.cloudinary.com/delq31bnx/image/upload/v1703572566/speaker3_hbfr4w.png"
-            alt="speaker 3"
-            width="350px"
-          />
-          <p>ERICK TEN HAG</p>
-        </div>
-        <div className={style.speaker}>
-          <img
-            src="https://res.cloudinary.com/delq31bnx/image/upload/v1703572569/speaker4_tssepx.png"
-            alt="speaker 4"
-            width="350px"
-          />
-          <p>ULTRAMAN GAIA</p>
-        </div>
-        <div className={style.speaker}>
-          <img
-            src="https://res.cloudinary.com/delq31bnx/image/upload/v1703572565/speaker5_g3ykit.png"
-            alt="speaker 5"
-            width="350px"
-          />
-          <p>ALIEN BORTON</p>
-        </div> */}
       </div>
-      <div className={style.title}>
-        <span>OUR</span>
-        <span>SPEAKERS</span>
-        <span>OUR</span>
-        <span>SPEAKERS</span>
-      </div>
+
       <div className={style.title2}>
         <span>SPEAKERS</span>
-        <span>OUR</span>
+        <span>{type.toUpperCase()}</span>
         <span>SPEAKERS</span>
-        <span>OUR</span>
+        <span>{type.toUpperCase()}</span>
+      </div>
+      <div className={style.title}>
+        <span>{type.toUpperCase()}</span>
+        <span>SPEAKERS</span>
+        <span>{type.toUpperCase()}</span>
+        <span>SPEAKERS</span>
       </div>
     </section>
   );
