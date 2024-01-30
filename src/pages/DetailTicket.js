@@ -7,13 +7,11 @@ import { BsCalendarDateFill } from "react-icons/bs";
 
 import { useEffect, useState } from "react";
 import { axiosInstance } from "../lib/axios";
-// import { useCallback } from "react";
 import { useParams } from "react-router-dom";
 
 export default function DetailTicket() {
   const { event_id } = useParams();
   const [eventCard, setEventCard] = useState(null);
-  // id = eventCard._id;
 
   useEffect(() => {
     const getEventCard = async () => {
