@@ -15,7 +15,6 @@ export default function Trailer() {
 
         if (status === 200) {
           setTeaser(content);
-          console.log(content);
         }
       } catch (error) {
         console.log(error);

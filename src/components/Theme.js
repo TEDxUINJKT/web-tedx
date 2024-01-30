@@ -2,8 +2,6 @@ import style from "../styles/components/Theme.module.css";
 import { useEffect, useState } from "react";
 import { axiosInstance } from "../lib/axios";
 
-import Theme_img from '../assets/theme.png';
-
 export default function Theme() {
   const [theme, setTheme] = useState(null);
 
@@ -17,7 +15,6 @@ export default function Theme() {
 
         if (status === 200) {
           setTheme(content);
-          console.log(content);
         }
       } catch (error) {
         console.log(error);
@@ -34,7 +31,7 @@ export default function Theme() {
     return (
       <div id="theme">
         <section className={style.layout} key={theme._id}>
-          <img src={Theme_img} alt="theme" width="80%" height="auto" />
+          <img src={theme.data.image.url} alt="theme" width="80%" height="auto" />
           <div className={style.title}>
             <p style={{ color: "#eb0028" }}>GRAND THEME</p>
             <span >{theme.data.title}</span>

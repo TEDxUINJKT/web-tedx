@@ -17,7 +17,6 @@ export default function Jumbotron() {
 
         if (status === 200) {
           setBanner(content.data.image.url);
-          console.log(content);
         }
       } catch (error) {
         console.log(error);
@@ -40,7 +39,7 @@ export default function Jumbotron() {
 
   return (
     <section className={style.jumbotron}>
-      <div className={style.img_mask}>
+      <div className={style.img_mask} style={{ maskImage: `url(${banner})` }}>
         <div
           className={style.roller_text}
           style={{ transform: `translateX(${-scrollY / 20}%)` }}>

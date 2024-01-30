@@ -16,7 +16,6 @@ export default function TicketCard({ event }) {
         const { status } = responseData;
         if (status === 200) {
           setTicket(responseData.tickets);
-          console.log(responseData.tickets);
         }
       } catch (error) {
         console.log(error);

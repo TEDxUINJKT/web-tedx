@@ -59,7 +59,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  mask-image: url("https://res.cloudinary.com/delq31bnx/image/upload/v1703572570/butterflybw_yyfegh.png");
   mask-repeat: no-repeat;
   mask-size: contain;
   mask-position: center;

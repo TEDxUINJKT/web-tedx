@@ -25,16 +25,6 @@ export default function Partners() {
     fetchMedparts();
   }, []);
 
-  const renderMedparts = () => {
-    return medparts.map((medpart) => {
-      return (
-        <div key={medpart._id}>
-          <img src={medpart.logo.url} width="600px" alt="medpart_list" />
-        </div>
-      );
-    });
-  };
-
   return (
     <section className={style.layout}>
       <div className={style.content}>
@@ -46,8 +36,7 @@ export default function Partners() {
           of this remarkable event
         </p>
       </div>
-      {renderMedparts()}
-      <SliderLogo />
+      <SliderLogo data={medparts} />
     </section>
   );
 }

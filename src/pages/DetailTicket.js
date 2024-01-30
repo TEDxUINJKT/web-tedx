@@ -23,10 +23,8 @@ export default function DetailTicket() {
         );
         const responseData = eventCardResponse.data;
         const { status } = responseData;
-        console.log(responseData);
         if (status === 200) {
           setEventCard(responseData.detail);
-          console.log(setEventCard);
         }
       } catch (error) {
         console.log(error);
