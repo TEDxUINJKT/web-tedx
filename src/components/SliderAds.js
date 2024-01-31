@@ -47,17 +47,21 @@ export default function SliderAds() {
         }
     }
 
-    return (
-        <Swiper
-            autoplay={{
-                delay: 2500,
-                disableOnInteraction: false,
-            }}
-            loop={true}
-            pagination={true}
-            modules={[Autoplay, Pagination]}
-            className="mySwiper">
-            {ads.map(ad => renderAds(ad))}
-        </Swiper>
-    );
+    if (ads.length !== 0) {
+        return (
+            <Swiper
+                autoplay={{
+                    delay: 2500,
+                    disableOnInteraction: false,
+                }}
+                loop={true}
+                pagination={true}
+                modules={[Autoplay, Pagination]}
+                className="mySwiper">
+                {ads.map(ad => renderAds(ad))}
+            </Swiper>
+        );
+    } else {
+        return null
+    }
 }

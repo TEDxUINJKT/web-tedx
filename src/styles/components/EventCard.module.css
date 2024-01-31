@@ -36,6 +36,10 @@
     gap: 10px;
 }
 
+.content h3 {
+    text-align: justify;
+}
+
 .content p {
     margin: 20px 0 10px 0;
     text-align: justify;
@@ -64,6 +68,12 @@
 .detail_content span:nth-child(1) {
     background-color: #AAA9A5;
     color: #181818;
+}
+
+.cta {
+    margin-top: 10px;
+    display: flex;
+    justify-content: flex-start;
 }
 
 @media only screen and (max-width: 600px) {
@@ -113,5 +123,9 @@
 
     .layout {
         margin: 100px 0;
+    }
+
+    .cta {
+        justify-content: center;
     }
 }

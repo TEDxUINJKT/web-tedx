@@ -42,16 +42,16 @@ export default function Speakers({ type }) {
       </div>
 
       <div className={style.title2}>
-        <span>SPEAKERS</span>
-        <span>{type.toUpperCase()}</span>
-        <span>SPEAKERS</span>
-        <span>{type.toUpperCase()}</span>
+        <span>SPEAKERs</span>
+        <span>{type}</span>
+        <span>SPEAKERs</span>
+        <span>{type}</span>
       </div>
       <div className={style.title}>
-        <span>{type.toUpperCase()}</span>
-        <span>SPEAKERS</span>
-        <span>{type.toUpperCase()}</span>
-        <span>SPEAKERS</span>
+        <span>{type}</span>
+        <span>SPEAKERs</span>
+        <span>{type}</span>
+        <span>SPEAKERs</span>
       </div>
     </section>
   );

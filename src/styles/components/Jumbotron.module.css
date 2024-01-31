@@ -98,7 +98,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  content: "v 2 . 0";
+  content: "Ver 2 . 0";
   /* CHANGER */
   background-color: white;
   color: #181818;
@@ -110,6 +110,7 @@
   position: absolute;
   z-index: 5;
   left: 5%;
+  font-size: 1em;
   transform: perspective(10px) rotateX(3deg);
 }
 
@@ -138,5 +139,6 @@
 
   .jumbotron::after {
     left: 10%;
+    font-size: 1.3em;
   }
 }

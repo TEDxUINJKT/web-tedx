@@ -4,8 +4,7 @@ import { useState, useEffect } from "react";
 import style from "../styles/components/EventCard.module.css";
 import { MdLocationOn, MdAccessTimeFilled } from "react-icons/md";
 import { BsCalendarDateFill } from "react-icons/bs";
-// import { useNavigate } from "react-router-dom";
-// import { useParams } from "react-router-dom";
+
 import { Link } from "react-router-dom";
 
 export default function EventCard() {
@@ -50,10 +49,12 @@ export default function EventCard() {
                 {event.place}
               </span>
             </div>
-            <p>{event.description}</p>
-            <Link to={`/ticket/${event._id}`}>
-              <button>GET TICKET</button>
-            </Link>
+            <p className="pc">{event.description}</p>
+            <div className={style.cta}>
+              <Link to={`/ticket/${event._id}`}>
+                <button>GET TICKET</button>
+              </Link>
+            </div>
           </div>
           <div className={style.thumb} style={{ backgroundImage: `url(${event.thumbnail.url})` }}>
           </div>
