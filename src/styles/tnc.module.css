@@ -1,0 +1,20 @@
+.layout {
+    width: 80%;
+    margin: 50px 0;
+}
+
+.layout h5 {
+    font-size: 3em;
+    margin: 0 0 50px 0;
+    text-align: center;
+}
+
+.layout ol li {
+    font-size: 1.3em;
+    font-weight: 600;
+    margin: 30px 0 5px 0;
+}
+
+.layout ol p {
+    text-align: justify;
+}

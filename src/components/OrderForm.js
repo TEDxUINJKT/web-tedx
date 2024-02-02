@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 export default function OrderForm() {
     return (
         <section style={layout}>
@@ -31,6 +33,13 @@ export default function OrderForm() {
                     <input placeholder="Phone Number" />
                 </div>
             </>
+            <div style={tnc}>
+                <input type="checkbox" />
+                <span>Make sure you are already read the <Link to="/terms-and-conditions" style={tnc_link}>terms and conditions</Link></span>
+            </div>
+            <div style={tnc}>
+                <span>Have any problem? Please <a href="https://wa.me/6281210696745" style={tnc_link}>contact us</a></span>
+            </div>
         </section>
     )
 }
@@ -66,4 +75,17 @@ const form = {
     flexDirection: 'column',
     gap: '10px',
     marginBottom: '10px',
+}
+
+const tnc = {
+    fontSize: '1.1em',
+    display: 'flex',
+    gap: '10px',
+}
+
+const tnc_link = {
+    fontSize: '1em',
+    display: 'inline',
+    color: 'white',
+    textDecoration: 'underline',
 }

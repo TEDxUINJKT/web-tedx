@@ -12,13 +12,13 @@ export default function PartnerContact() {
                     <span aria-hidden="true">BE PART OF US</span>
                 </p>
                 <div className={style.cta}>
-                    <Link to="/ticket">
+                    <Link to="mailto:tedxuinjakarta@gmail.com">
                         <button>EMAIL</button>
                     </Link>
                     <span className="pc">OR</span>
-                    <Link to="/event">
+                    <a href="https://wa.me/6281210696745">
                         <button>WHATSAPP</button>
-                    </Link>
+                    </a>
                 </div>
             </div>
         </section>

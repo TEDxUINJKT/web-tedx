@@ -10,6 +10,7 @@ import Ticket from "./pages/Ticket";
 import Login from "./pages/Login";
 import DetailTicket from "./pages/DetailTicket";
 import Order from "./pages/Order";
+import TNC from "./pages/TNC";
 import Page404 from "./pages/404";
 
 export default function AppRoutes() {
@@ -25,6 +26,7 @@ export default function AppRoutes() {
           <Route path="/ticket/:event_id" element={<DetailTicket />} />
           <Route path="/order/:id" element={<Order />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/terms-and-conditions" element={<TNC />} />
           <Route path="*" element={<Page404 />} />
         </Routes>
       </Layout>
