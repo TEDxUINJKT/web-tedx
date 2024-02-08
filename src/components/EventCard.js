@@ -1,8 +1,7 @@
 import { axiosInstance } from "../lib/axios";
 import { useState, useEffect } from "react";
-// import Button from "./Button";
 import style from "../styles/components/EventCard.module.css";
-import { MdLocationOn, MdAccessTimeFilled } from "react-icons/md";
+import { MdLocationOn } from "react-icons/md";
 import { BsCalendarDateFill } from "react-icons/bs";
 
 import { Link } from "react-router-dom";
@@ -39,10 +38,6 @@ export default function EventCard() {
               <span>
                 <BsCalendarDateFill />
                 {event.date}
-              </span>
-              <span>
-                <MdAccessTimeFilled />
-                {event.time}
               </span>
               <span>
                 <MdLocationOn />
