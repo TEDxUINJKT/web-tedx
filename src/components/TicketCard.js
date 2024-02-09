@@ -1,48 +1,33 @@
-import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
-import { axiosInstance } from "../lib/axios";
-import style from "../styles/components/TicketCard.module.css";
+import { useNavigate } from "react-router-dom"
+import { useDispatch } from "react-redux"
+import { OrderDetailTicketContent } from '../state/order/middleware'
 
-export default function TicketCard({ event }) {
-  const [tickets, setTicket] = useState([]);
+import style from "../styles/components/TicketCard.module.css"
 
-  useEffect(() => {
-    const getTicket = async () => {
-      try {
-        const ticketResponse = await axiosInstance.get(
-          `event/ticket/${event}`
-        );
-        const responseData = ticketResponse.data;
-        const { status } = responseData;
-        if (status === 200) {
-          setTicket(responseData.tickets);
-        }
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getTicket();
-  }, [event]);
+export default function TicketCard({ data }) {
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
 
-  const renderTicket = () => {
-    return (
-      <section className={style.layout}>
-        {tickets.map(ticket => (
-          <div className={style.ticket_card} key={ticket._id}>
-            <h5>{ticket.type_ticket}</h5>
-            <p>{ticket.description}</p>
-            <span className={style.price_tag}>
-              <span>IDR</span> {ticket.price}
-            </span>
-            {ticket.status === 'Available' ?
-              (<Link to={`/order/${ticket._id}`}>
-                <button className="btn_secondary">BUY NOW</button>
-              </Link>) : <button className="btn_disable">BUY NOW</button>}
-          </div>
-        ))}
-      </section>
-    );
-  };
+  function handleOrderRedirect(detail_ticket) {
+    dispatch(OrderDetailTicketContent(detail_ticket))
+    navigate(`/order/${detail_ticket._id}`)
+  }
 
-  return renderTicket();
+  return (
+    <section className={style.layout}>
+      {data?.map(ticket => (
+        <div className={style.ticket_card} key={ticket._id}>
+          <h5>{ticket.type_ticket}</h5>
+          <p>{ticket.description}</p>
+          <span className={style.price_tag}>
+            <span>IDR</span> {ticket.price}
+          </span>
+          {ticket.status === 'Available' ?
+            (
+              <button onClick={() => handleOrderRedirect(ticket)} className="btn_secondary">BUY NOW</button>
+            ) : <button className="btn_disable">BUY NOW</button>}
+        </div>
+      ))}
+    </section>
+  )
 }

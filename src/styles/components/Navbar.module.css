@@ -38,6 +38,13 @@
     border-bottom: 2px solid #eb0028 !important;
 }
 
+.navbar_cta {
+    width: fit-content;
+    display: flex;
+    gap: 15px;
+    height: fit-content;
+}
+
 @media only screen and (max-width: 1000px) {
     .navbar {
         padding: 25px 20px;

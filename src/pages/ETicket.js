@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { faClock } from "@fortawesome/free-solid-svg-icons";
@@ -84,3 +85,10 @@ export default function ETicket() {
     </div>
   );
 }
+=======
+export default function ETicket() {
+    return (
+        <h1>E-Ticket Page</h1>
+    )
+}
+>>>>>>> 98f2a9627871c629559374d6114aa463b8547c78

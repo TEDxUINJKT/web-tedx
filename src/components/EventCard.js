@@ -1,67 +1,38 @@
-import { axiosInstance } from "../lib/axios";
-import { useState, useEffect } from "react";
-// import Button from "./Button";
-import style from "../styles/components/EventCard.module.css";
-import { MdLocationOn, MdAccessTimeFilled } from "react-icons/md";
+import { MdLocationOn } from "react-icons/md";
 import { BsCalendarDateFill } from "react-icons/bs";
 
 import { Link } from "react-router-dom";
+import style from "../styles/components/EventCard.module.css";
 
-export default function EventCard() {
-  const [events, setEvents] = useState([]);
-  // const navigate = useNavigate();
-  const fetchEvents = async () => {
-    try {
-      const eventsResponse = await axiosInstance.get("/event/2");
-      const responseData = eventsResponse.data;
-      const { status } = responseData;
-
-      if (status === 200) {
-        setEvents(responseData.events);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    fetchEvents();
-  }, []);
-
-  const renderEvents = () => {
-    return events.map((event) => {
-      return (
-        <div className={style.card} key={event._id}>
+export default function EventCard({ data }) {
+  return (
+    <section className={style.layout}>
+      {data?.map(each => (
+        <div className={style.card} key={each._id}>
           <div className={style.content}>
-            <h3>{event.event}</h3>
+            <h3>{each.event}</h3>
             <div className={style.detail_content}>
-              <span>{event.type}</span>
+              <span>{each.type}</span>
               <span>
                 <BsCalendarDateFill />
-                {event.date}
-              </span>
-              <span>
-                <MdAccessTimeFilled />
-                {event.time}
+                {each.date}
               </span>
               <span>
                 <MdLocationOn />
-                {event.place}
+                {each.place}
               </span>
             </div>
-            <p className="pc">{event.description}</p>
+            <p className="pc">{each.description}</p>
             <div className={style.cta}>
-              <Link to={`/ticket/${event._id}`}>
+              <Link to={`/ticket/${each._id}`}>
                 <button>GET TICKET</button>
               </Link>
             </div>
           </div>
-          <div className={style.thumb} style={{ backgroundImage: `url(${event.thumbnail.url})` }}>
+          <div className={style.thumb} style={{ backgroundImage: `url(${each.thumbnail.url})` }}>
           </div>
         </div>
-      );
-    });
-  };
-
-  return <section className={style.layout}>{renderEvents()}</section>;
+      ))}
+    </section>
+  )
 }

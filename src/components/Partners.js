@@ -1,30 +1,8 @@
 import style from "../styles/components/Partners.module.css";
-import { axiosInstance } from "../lib/axios";
-import { useState, useEffect } from "react";
 
 import SliderLogo from "./SliderLogo";
 
-export default function Partners() {
-  const [medparts, setMedparts] = useState([]);
-
-  const fetchMedparts = async () => {
-    try {
-      const medpartsResponse = await axiosInstance.get("/partner/2/medpart");
-      const responseData = medpartsResponse.data;
-      const { status } = responseData;
-
-      if (status === 200) {
-        setMedparts(responseData.partners);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    fetchMedparts();
-  }, []);
-
+export default function Partners({ data }) {
   return (
     <section className={style.layout}>
       <div className={style.content}>
@@ -36,7 +14,7 @@ export default function Partners() {
           of this remarkable event
         </p>
       </div>
-      <SliderLogo data={medparts} />
+      <SliderLogo data={data} />
     </section>
   );
 }

@@ -1,8 +1,29 @@
 import OrderDetail from "../components/OrderDetail"
 import OrderForm from "../components/OrderForm"
 
+import { useState } from "react";
+import { useSelector } from "react-redux"
 
 export default function Order() {
+    const { order, auth } = useSelector(states => states)
+
+    const plain = {
+        ticket_id: order.ticket._id,
+        event_name: order.event.event,
+        user_id: auth.id,
+        price: order.ticket.price,
+        total_price: order.ticket.price,
+        email: null,
+        first_name: null,
+        last_name: null,
+        university: null,
+        phone_number: null,
+        is_refferal: false,
+        refferal: null
+    }
+
+    const [formData, setFormData] = useState(plain)
+
     return (
         <section style={{ padding: '100px 0 0 0' }}>
             <div style={{ textAlign: 'center' }}>
@@ -13,8 +34,8 @@ export default function Order() {
                 </h1>
             </div>
             <div style={layout}>
-                <OrderForm />
-                <OrderDetail />
+                <OrderForm plain={order} data={formData} setData={setFormData} />
+                <OrderDetail plain={order} data={formData} setData={setFormData} />
             </div>
         </section>
     )
