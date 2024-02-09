@@ -1,11 +1,9 @@
 import { useState, useEffect } from "react";
 import api from '../lib/api'
 
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 export default function OrderForm({ data, setData }) {
-    const navigate = useNavigate()
-
     const [snap, setSnap] = useState(null)
     const [acceptedTNC, setAcceptedTNC] = useState(false)
     const [snapShow, setSnapShow] = useState(false)
@@ -18,43 +16,24 @@ export default function OrderForm({ data, setData }) {
 
             setSnapShow(true)
             if (response.data.status === 200) {
-                snapEmbed(response.data.snap_token, 'snap-container', {
-                    onSuccess: function (result) {
-                        console.log('success', result)
-                        setSnapShow(false)
-                        navigate("/my-ticket")
-                    },
-                    onPending: function (result) {
-                        console.log('pending', result)
-                        setSnapShow(false)
-                        navigate("/my-ticket")
-                    },
-                    onClose: function () {
-                        console.log('pending')
-                        setSnapShow(false)
-                        navigate("/my-ticket")
-                    }
-                })
+                snapEmbed(response.data.snap_token, 'snap-container')
             }
         } else {
             console.log('Accept TNC First')
         }
     }
 
-    function snapEmbed(snap_token, embedId, action) {
+    function snapEmbed(snap_token, embedId) {
         if (snap) {
             snap.embed(snap_token, {
-                embedId,
-                onSuccess: action.onSuccess,
-                onPending: action.onPending,
-                onClose: action.onClose
+                embedId
             })
         }
     }
 
     useEffect(() => {
-        const myMidtransClientKey = 'SB-Mid-client-3rs8fB6ubM1J_IKt'
-        const midtransScriptUrl = 'https://app.sandbox.midtrans.com/snap/snap.js'
+        const myMidtransClientKey = process.env.REACT_APP_MIDTRANS_CLIENT_KEY
+        const midtransScriptUrl = process.env.REACT_APP_MIDTRANS_SCRIPT_URL
 
         const scriptTag = document.createElement('script')
         scriptTag.src = midtransScriptUrl;
