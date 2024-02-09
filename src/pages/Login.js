@@ -38,7 +38,7 @@ export default function Login() {
   return (
     <section className={style.layout}>
       <div className={style.banner}>
-        <h2 className="pc">
+        <h2 className={style.banner_title}>
           WELCOME TO <strong>TEDX</strong>UINJAKARTA
         </h2>
         {formType === 'login' ? (

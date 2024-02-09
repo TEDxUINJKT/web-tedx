@@ -1,7 +1,8 @@
 import axios from 'axios'
 
 export default (() => {
-    const baseUrl = process.env.REACT_APP_API_URL
+    // const baseUrl = process.env.REACT_APP_API_URL
+    const baseUrl = 'http://localhost:8000'
 
     axios.defaults.withCredentials = true
 
@@ -116,6 +117,20 @@ export default (() => {
         return response
     }
 
+    async function getUserOrderList(user_id) {
+        const url = baseUrl + `/order/user/${user_id}`
+
+        const response = await axios.get(url)
+        return response.data.data
+    }
+
+    async function getETicketDetail(order_id) {
+        const url = baseUrl + `/order/e-ticket/${order_id}`
+
+        const response = await axios.get(url)
+        return response.data.data
+    }
+
     return {
         getTimeline,
         getTheme,
@@ -131,6 +146,8 @@ export default (() => {
         login,
         refresh,
         registerUser,
-        createOrder
+        createOrder,
+        getUserOrderList,
+        getETicketDetail
     }
 })()

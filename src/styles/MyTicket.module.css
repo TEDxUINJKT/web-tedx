@@ -1,0 +1,40 @@
+.layout {
+    width: 90%;
+}
+
+.layout table {
+    overflow: hidden;
+    border-radius: 10px;
+    margin-top: 50px;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.layout tr th:first-child {
+    padding: 0 5px;
+}
+
+.layout table thead {
+    background-color: #eb0028;
+    text-align: center;
+}
+
+.layout table thead th {
+    padding: 15px 0;
+    color: white;
+}
+
+.layout table tbody {
+    padding: 10px;
+    background-color: rgba(0, 0, 0, .1);
+}
+
+.layout table td {
+    padding: 10px 0;
+    text-align: center;
+}
+
+.cta {
+    display: flex;
+    justify-content: center;
+}

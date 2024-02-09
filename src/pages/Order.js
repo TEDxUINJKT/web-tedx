@@ -4,6 +4,8 @@ import OrderForm from "../components/OrderForm"
 import { useState } from "react";
 import { useSelector } from "react-redux"
 
+import style from '../styles/Order.module.css'
+
 export default function Order() {
     const { order, auth } = useSelector(states => states)
 
@@ -33,7 +35,7 @@ export default function Order() {
                     <span aria-hidden="true">ORDER</span>
                 </h1>
             </div>
-            <div style={layout}>
+            <div className={style.layout}>
                 <OrderForm plain={order} data={formData} setData={setFormData} />
                 <OrderDetail plain={order} data={formData} setData={setFormData} />
             </div>
@@ -41,10 +43,11 @@ export default function Order() {
     )
 }
 
-const layout = {
-    margin: '150px 0',
-    width: '90vw',
-    display: 'flex',
-    alignItems: 'flex-start',
-    justifyContent: 'space-between'
-}
+// const layout = {
+//     margin: '150px 0',
+//     width: '90vw',
+//     flexWrap: 'wrap',
+//     display: 'flex',
+//     alignItems: 'flex-start',
+//     justifyContent: 'space-between'
+// }
