@@ -16,6 +16,7 @@ import DetailTicket from "./pages/DetailTicket";
 import Order from "./pages/Order";
 import TNC from "./pages/TNC";
 import MyTicket from "./pages/MyTicket";
+import ETicket from "./pages/ETicket";
 import Page404 from "./pages/404";
 
 export default function AppRoutes() {
@@ -67,6 +68,7 @@ export default function AppRoutes() {
             <>
               <Route path="/order/:id" element={<Order />} />
               <Route path="/my-ticket" element={<MyTicket />} />
+              <Route path="/e-ticket/:ticket_id" element={<ETicket />} />
             </>
           )}
 
