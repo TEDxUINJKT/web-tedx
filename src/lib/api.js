@@ -1,9 +1,8 @@
 import axios from 'axios'
 
 export default (() => {
-    // const baseUrl = process.env.REACT_APP_API_URL
-    const baseUrl = 'http://localhost:8000'
-
+    const baseUrl = process.env.REACT_APP_API_URL
+    
     axios.defaults.withCredentials = true
 
     async function getTimeline() {
