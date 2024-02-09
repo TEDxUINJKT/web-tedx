@@ -14,14 +14,18 @@ export default function ETicket() {
 
     useEffect(() => {
         dispatch(UserEticketDetail(order_id))
-        generateQR(ticket.selected?.order._id)
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [dispatch, order_id])
+
+    useEffect(() => {
+        generateQR(ticket.selected?.order._id)
+    }, [ticket])
 
     async function generateQR(data) {
         try {
             const QR = await QRCode.toDataURL(data)
             setURL(QR)
+            console.log('test')
+
         } catch (err) {
             console.log(err)
         }
