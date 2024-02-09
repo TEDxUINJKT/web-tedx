@@ -12,7 +12,7 @@ import DetailTicket from "./pages/DetailTicket";
 import Order from "./pages/Order";
 import TNC from "./pages/TNC";
 import Page404 from "./pages/404";
-
+import ETicket from "./pages/ETicket";
 export default function AppRoutes() {
   return (
     <Router>
@@ -28,6 +28,7 @@ export default function AppRoutes() {
           <Route path="/login" element={<Login />} />
           <Route path="/terms-and-conditions" element={<TNC />} />
           <Route path="*" element={<Page404 />} />
+          <Route path="/ETicket" element={<ETicket />} />
         </Routes>
       </Layout>
     </Router>

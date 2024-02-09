@@ -127,7 +127,7 @@ export default function Login() {
               <p className="text-white font-thin text-center ">
                 Don't have an account?{" "}
                 <Link
-                  to={"/signup"}
+                  to={"/eTicket"}
                   className="text-black font-bold hover:underline display: inline">
                   <span>SIGN UP</span>
                 </Link>
