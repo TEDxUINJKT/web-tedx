@@ -2,19 +2,20 @@ import OrderDetail from "../components/OrderDetail"
 import OrderForm from "../components/OrderForm"
 
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux"
 
 export default function Order() {
-    const { id } = useParams();
+    const { order, auth } = useSelector(states => states)
 
     const plain = {
-        ticket_id: id,
-        event_name: 'TEST',
-        user_id: '123123',
-        price: 11000,
-        total_price: 10000,
+        ticket_id: order.ticket._id,
+        event_name: order.event.event,
+        user_id: auth.id,
+        price: order.ticket.price,
+        total_price: order.ticket.price,
         email: null,
-        full_name: null,
+        first_name: null,
+        last_name: null,
         university: null,
         phone_number: null,
         is_refferal: false,
@@ -33,8 +34,8 @@ export default function Order() {
                 </h1>
             </div>
             <div style={layout}>
-                <OrderForm data={formData} setData={setFormData} />
-                <OrderDetail data={formData} setData={setFormData} />
+                <OrderForm plain={order} data={formData} setData={setFormData} />
+                <OrderDetail plain={order} data={formData} setData={setFormData} />
             </div>
         </section>
     )

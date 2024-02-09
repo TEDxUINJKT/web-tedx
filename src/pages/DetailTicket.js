@@ -5,67 +5,19 @@ import style from "../styles/components/EventCard.module.css";
 import { MdLocationOn, MdAccessTimeFilled } from "react-icons/md";
 import { BsCalendarDateFill } from "react-icons/bs";
 
-import { useEffect, useState } from "react";
-import { axiosInstance } from "../lib/axios";
 import { useParams } from "react-router-dom";
+import { useEffect } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { EventDetailContent } from '../state/content/middleware'
 
 export default function DetailTicket() {
   const { event_id } = useParams();
-  const [eventCard, setEventCard] = useState(null);
+  const dispatch = useDispatch()
+  const { content } = useSelector(states => states)
 
   useEffect(() => {
-    const getEventCard = async () => {
-      try {
-        const eventCardResponse = await axiosInstance.get(
-          `/event/detail/${event_id}`
-        );
-        const responseData = eventCardResponse.data;
-        const { status } = responseData;
-        if (status === 200) {
-          setEventCard(responseData.detail);
-        }
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    getEventCard();
-  }, [event_id]);
-
-  const renderEventCard = () => {
-    if (!eventCard) {
-      return null; // Return early if eventCard is still empty
-    }
-    return (
-      <div
-        className={style.card}
-        style={{ marginTop: "100px" }}
-        key={eventCard._id}>
-        <div className={style.content}>
-          <h3>{eventCard.event}</h3>
-          <div className={style.detail_content}>
-            <span>{eventCard.type}</span>
-            <span>
-              <BsCalendarDateFill />
-              {eventCard.date}
-            </span>
-            <span>
-              <MdAccessTimeFilled />
-              {eventCard.time}
-            </span>
-            <span>
-              <MdLocationOn />
-              {eventCard.place}
-            </span>
-          </div>
-          <p>{eventCard.description}</p>
-        </div>
-        <div className={style.thumb}>
-          <img src={eventCard.thumbnail?.url} alt="event" width="100%" />
-        </div>
-      </div>
-    );
-  };
+    dispatch(EventDetailContent(event_id))
+  }, [dispatch, event_id])
 
   return (
     <section className="page-container-no-bottom">
@@ -76,8 +28,36 @@ export default function DetailTicket() {
           <span aria-hidden="true">TICKET LIST</span>
         </h1>
       </div>
-      {renderEventCard()}
-      <TicketCard event={event_id} />
+      {content.selected_detail && (
+        <div
+          className={style.card}
+          style={{ marginTop: "100px" }}
+          key={content.selected_detail?._id}>
+          <div className={style.content}>
+            <h3>{content.selected_detail?.event}</h3>
+            <div className={style.detail_content}>
+              <span>{content.selected_detail?.type}</span>
+              <span>
+                <BsCalendarDateFill />
+                {content.selected_detail?.date}
+              </span>
+              <span>
+                <MdAccessTimeFilled />
+                {content.selected_detail?.time}
+              </span>
+              <span>
+                <MdLocationOn />
+                {content.selected_detail?.place}
+              </span>
+            </div>
+            <p>{content.selected_detail?.description}</p>
+          </div>
+          <div className={style.thumb}>
+            <img src={content.selected_detail?.thumbnail?.url} alt="event" width="100%" />
+          </div>
+        </div>
+      )}
+      <TicketCard data={content.ticket} />
     </section>
   );
 }

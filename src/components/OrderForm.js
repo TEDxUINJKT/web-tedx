@@ -1,5 +1,5 @@
-import { axiosInstance } from "../lib/axios";
 import { useState, useEffect } from "react";
+import api from '../lib/api'
 
 import { Link, useNavigate } from 'react-router-dom'
 
@@ -14,8 +14,7 @@ export default function OrderForm({ data, setData }) {
         e.preventDefault();
 
         if (acceptedTNC) {
-            const url = `/order/${data.ticket_id}`
-            const response = await axiosInstance.post(url, data)
+            const response = await api.createOrder(data)
 
             setSnapShow(true)
             if (response.data.status === 200) {

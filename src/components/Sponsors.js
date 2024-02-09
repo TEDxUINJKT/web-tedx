@@ -1,31 +1,8 @@
 import style from "../styles/components/Sponsors.module.css";
-import { useState, useEffect } from "react";
-import { axiosInstance } from "../lib/axios";
 
 import SliderLogo from "./SliderLogo";
 
-export default function Sponsors() {
-  const [sponsors, setsponsors] = useState([]);
-
-  const fetchSponsors = async () => {
-    try {
-      const sponsorsResponse = await axiosInstance.get("partner/2/sponsor");
-      const responseData = sponsorsResponse.data;
-      const { status } = responseData;
-
-      if (status === 200) {
-        setsponsors(responseData.partners);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    fetchSponsors();
-  }, []);
-
-
+export default function Sponsors({ data }) {
   return (
     <section className={style.layout}>
       <div className={style.content}>
@@ -37,7 +14,7 @@ export default function Sponsors() {
           of this remarkable event
         </p>
       </div>
-      <SliderLogo data={sponsors} />
+      <SliderLogo data={data} />
     </section>
   );
 }
