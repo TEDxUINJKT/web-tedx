@@ -60,11 +60,11 @@ export default function AppRoutes() {
           <Route path="/ticket/:event_id" element={<DetailTicket />} />
           <Route path="/login" element={<Login />} />
           <Route path="/terms-and-conditions" element={<TNC />} />
-          {auth?.token === undefined || auth?.role !== 'Guest' ? (
+          {auth?.token === undefined ? (
             <>
-              <Route path="/order/:id" element={<Page404 />} />
-              <Route path="/my-ticket" element={<Page404 />} />
-              <Route path="/e-ticket/:order_id" element={<Page404 />} />
+              <Route path="/order/:id" element={<Login />} />
+              <Route path="/my-ticket" element={<Login />} />
+              <Route path="/e-ticket/:order_id" element={<Login />} />
             </>
           ) : (
             <>

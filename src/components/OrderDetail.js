@@ -2,10 +2,35 @@ import { MdLocationOn } from "react-icons/md";
 
 export default function OrderDetail({ data, setData, plain }) {
     function setRefferal(e) {
+        const input_refferal = e.target.value
+
+        const refferal_list = plain.ticket.refferal || []
+
+        let is_available = {
+            name: 'NONE',
+            value: 0
+        }
+
+        refferal_list.forEach(each => {
+            if (each.name === input_refferal) {
+                is_available = each
+            }
+        })
+
         if (e.target.value === '') {
-            setData({ ...data, is_refferal: false, refferal: null })
+            let new_price = data.price
+
+            setData({ ...data, is_refferal: false, refferal: null, total_price: new_price })
         } else {
-            setData({ ...data, is_refferal: true, refferal: e.target.value })
+            console.log(is_available)
+
+            let new_price = data.price - is_available.value
+
+            if (new_price < 0) {
+                new_price = 0
+            }
+
+            setData({ ...data, is_refferal: true, refferal: input_refferal, total_price: new_price })
         }
     }
 
@@ -31,9 +56,9 @@ export default function OrderDetail({ data, setData, plain }) {
                     <input onChange={(e) => setRefferal(e)} value={data.refferal} style={refereal_input} placeholder="(Optional)" />
                 </div>
             </div>
-            <div style={{ ...detail_content, margin: '10px 0' }}>
+            <div style={{ ...detail_content, margin: '10px 0', fontSize: '1.2em', fontWeight: '600' }}>
                 <span>Subtotal</span>
-                <span>IDR {plain.ticket.price}</span>
+                <span>IDR {data.total_price}</span>
             </div>
         </section>
     )
