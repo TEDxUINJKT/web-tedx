@@ -18,19 +18,19 @@ export default function OrderDetail({ data, setData, plain }) {
         })
 
         if (e.target.value === '') {
-            let new_price = data.price
-
-            setData({ ...data, is_refferal: false, refferal: null, total_price: new_price })
+            setData({ ...data, is_refferal: false, refferal: null, total_price: data.price })
         } else {
-            console.log(is_available)
+            if (is_available.value !== 0) {
+                let new_price = data.price - is_available.value
 
-            let new_price = data.price - is_available.value
+                if (new_price < 0) {
+                    new_price = 0
+                }
 
-            if (new_price < 0) {
-                new_price = 0
+                setData({ ...data, is_refferal: true, refferal: input_refferal, total_price: new_price })
+            } else {
+                setData({ ...data, is_refferal: false, refferal: null, total_price: data.price })
             }
-
-            setData({ ...data, is_refferal: true, refferal: input_refferal, total_price: new_price })
         }
     }
 
