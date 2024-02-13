@@ -1,10 +1,14 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { asyncRefreshToken, asyncCheckLogin, asyncLogout } from './state/auth/middleware'
-import { useSelector, useDispatch } from 'react-redux'
-import { useEffect } from 'react'
+import {
+  asyncRefreshToken,
+  asyncCheckLogin,
+  asyncLogout,
+} from "./state/auth/middleware";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
 
 import Layout from "./Layout";
-import Loading from "./components/Loading"
+import Loading from "./components/Loading";
 
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -18,10 +22,10 @@ import TNC from "./pages/TNC";
 import MyTicket from "./pages/MyTicket";
 import ETicket from "./pages/ETicket";
 import Page404 from "./pages/404";
-import ETicket from "./pages/ETicket";
+
 export default function AppRoutes() {
-  const { auth = {} } = useSelector(states => states)
-  const dispatch = useDispatch()
+  const { auth = {} } = useSelector((states) => states);
+  const dispatch = useDispatch();
 
   // Refresh Token Cycle
   useEffect(() => {
@@ -30,22 +34,22 @@ export default function AppRoutes() {
       try {
         // Do in 8 minutes
         const interval = setInterval(() => {
-          dispatch(asyncRefreshToken())
+          dispatch(asyncRefreshToken());
         }, 480000);
 
         return () => clearInterval(interval);
       } catch (err) {
-        dispatch(asyncLogout())
+        dispatch(asyncLogout());
       }
     } else {
       // Try Tto get token from Session Storage
       try {
-        dispatch(asyncCheckLogin())
+        dispatch(asyncCheckLogin());
       } catch (err) {
-        dispatch(asyncLogout())
+        dispatch(asyncLogout());
       }
     }
-  }, [auth, dispatch])
+  }, [auth, dispatch]);
 
   return (
     <Router>
@@ -60,15 +64,17 @@ export default function AppRoutes() {
           <Route path="/ticket/:event_id" element={<DetailTicket />} />
           <Route path="/login" element={<Login />} />
           <Route path="/terms-and-conditions" element={<TNC />} />
-          {auth?.token !== undefined && auth?.role !== 'Guest' ? (
+          {auth?.token === undefined ? (
             <>
-              <Route path="/order/:id" element={<Page404 />} />
-              <Route path="/my-ticket" element={<Page404 />} /></>
+              <Route path="/order/:id" element={<Login />} />
+              <Route path="/my-ticket" element={<Login />} />
+              <Route path="/e-ticket/:order_id" element={<Login />} />
+            </>
           ) : (
             <>
               <Route path="/order/:id" element={<Order />} />
               <Route path="/my-ticket" element={<MyTicket />} />
-              <Route path="/e-ticket/:ticket_id" element={<ETicket />} />
+              <Route path="/e-ticket/:order_id" element={<ETicket />} />
             </>
           )}
 

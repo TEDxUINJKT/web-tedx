@@ -20,6 +20,7 @@
   font-size: 7em;
   font-weight: normal;
   line-height: 0.8em;
+  transition: .3s;
 }
 
 .banner h2 strong {
@@ -97,8 +98,29 @@
   .banner {
     width: 100vw;
   }
+}
 
-  .banner h2 {
+@media only screen and (max-width: 900px) {
+  .banner {
+    justify-content: center;
+  }
+
+  .login_form {
+    min-width: 90vw;
+  }
+
+  .banner_title {
+    display: none;
+  }
+
+  .login_form h2 {
     font-size: 5em;
   }
+}
+
+@media only screen and (max-width: 1200px) {
+  .banner_title {
+    font-size: 5em !important;
+  }
+
 }
