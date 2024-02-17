@@ -1,6 +1,6 @@
 import { MdLocationOn } from "react-icons/md";
 
-export default function OrderDetail({ data, setData, plain }) {
+export default function OrderDetail({ data, setData, plain }) {    
     function setRefferal(e) {
         const input_refferal = e.target.value
 
@@ -34,31 +34,47 @@ export default function OrderDetail({ data, setData, plain }) {
         }
     }
 
+    function updateQuantity(quantity){
+        if(quantity <= 0){
+            setData({ ...data, quantity:1, total_price:plain?.ticket.price })
+        }else{
+            setData({ ...data, quantity, total_price:plain?.ticket.price*quantity, total_guest:plain?.ticket?.bundle_status?.bundle_count*quantity })
+        }
+    }
+
     return (
         <section style={layout}>
             <h5># Order Details</h5>
-            <img src={plain.event.thumbnail.url} alt="thumb" width="100%" style={{ borderRadius: '10px' }} />
-            <span style={{ fontSize: '1.2em', fontWeight: '600' }}>({plain.ticket.type_ticket}) {plain.event.event} Ticket</span>
+            <img src={plain?.event?.thumbnail.url} alt="thumb" width="100%" style={{ borderRadius: '10px' }} />
+            <span style={{ fontSize: '1.2em', fontWeight: '600' }}>({plain?.ticket?.type_ticket}) {plain?.event?.event} Ticket</span>
             <div style={tag_layout}>
-                <span style={tag_type}>{plain.event.type}</span>
+                <span style={tag_type}>{plain?.event?.type}</span>
                 <span style={tag}>
                     <MdLocationOn />
-                    {plain.event.place}
+                    {plain?.event?.place}
                 </span>
             </div>
             <div style={detail_layout}>
                 <div style={detail_content}>
                     <span>Amount</span>
-                    <span>IDR {plain.ticket.price}</span>
+                    <span>IDR {plain?.ticket?.price}</span>
+                </div>
+                <div style={detail_content}>
+                    <span>Quantity</span>
+                    <div style={quantity_layout}>
+                        <span style={quantity_button} onClick={()=>updateQuantity(data?.quantity - 1)}>-</span>
+                        <span>{data?.quantity}</span>
+                        <span style={quantity_button} onClick={()=>updateQuantity(data?.quantity + 1)}>+</span>
+                    </div>
                 </div>
                 <div style={detail_content}>
                     <span>Refferal Code</span>
-                    <input onChange={(e) => setRefferal(e)} value={data.refferal} style={refereal_input} placeholder="(Optional)" />
+                    <input onChange={(e) => setRefferal(e)} value={data?.refferal} style={refereal_input} placeholder="(Optional)" />
                 </div>
             </div>
             <div style={{ ...detail_content, margin: '10px 0', fontSize: '1.2em', fontWeight: '600' }}>
                 <span>Subtotal</span>
-                <span>IDR {data.total_price}</span>
+                <span>IDR {data?.total_price}</span>
             </div>
         </section>
     )
@@ -112,4 +128,20 @@ const tag = {
 
 const refereal_input = {
     textAlign: 'right',
+}
+
+const quantity_layout ={
+    display:'flex',
+    gap:'15px',
+    alignItems:'baseline',
+}
+
+const quantity_button = {
+    backgroundColor:'white',
+    padding:'5px 12px',
+    display:'block',
+    color:'#eb0028',
+    borderRadius:'100px',
+    fontWeight:'bold',
+    cursor:'pointer',
 }

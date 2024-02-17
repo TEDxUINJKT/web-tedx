@@ -1,5 +1,5 @@
 import { HomeAction, ThemeAction, SpeakerAction, PartnerAction, EventAction, DetailEventAction } from './action'
-import { DetailEventOrderAction } from '../order/action'
+import { DetailEventOrderAction,DetailTicketAction } from '../order/action'
 import { StartLoadingActions, FetchLoadingActions, FinishLoadingActions } from '../loading/action'
 
 import api from "../../lib/api"
@@ -103,4 +103,20 @@ function EventDetailContent(event_id) {
     }
 }
 
-export { HomeContent, ThemeContent, SpeakerContent, PartnerContent, EventContent, EventDetailContent }
+function TicketDetailContent(ticket_id) {
+    return async dispatch => {
+        dispatch(StartLoadingActions())
+        try {
+            dispatch(FetchLoadingActions())
+            const detail = await api.getTicketDetail(ticket_id)
+
+            dispatch(DetailTicketAction(detail.ticket))
+            dispatch(DetailEventOrderAction(detail.event))
+        } catch (err) {
+            console.log(err)
+        }
+        dispatch(FinishLoadingActions())
+    }
+}
+
+export { HomeContent, ThemeContent, SpeakerContent, PartnerContent, EventContent, EventDetailContent,TicketDetailContent }

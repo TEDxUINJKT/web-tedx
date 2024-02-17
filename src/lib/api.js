@@ -64,6 +64,12 @@ export default (() => {
         return response.data.detail
     }
 
+    async function getTicketDetail(ticket_id) {
+        const url = baseUrl + `/event/ticket/detail/${ticket_id}`
+        const response = await axios.get(url)
+        return response.data.detail
+    }
+
     async function getTicketList(event_id) {
         const url = baseUrl + `/event/ticket/${event_id}`
         const response = await axios.get(url)
@@ -140,6 +146,7 @@ export default (() => {
         getTeaser,
         getEventList,
         getEventDetail,
+        getTicketDetail,
         getTicketList,
         login,
         refresh,
