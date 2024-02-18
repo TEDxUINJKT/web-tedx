@@ -36,14 +36,14 @@ export default function Navbar() {
                 {auth?.token === undefined ? (
                     <div className={style.navbar_cta}>
                         <Link to="/login">
-                            <button>LOGIN</button>
+                            <button onClick={() => setShow(!showNav)}>LOGIN</button>
                         </Link>
                     </div>
                 ) : (
                     <div className={style.navbar_cta}>
                         {auth?.role === 'Guest' && (
                             <Link to="/my-ticket">
-                                <button>My Ticket</button>
+                                <button onClick={() => setShow(!showNav)}>My Ticket</button>
                             </Link>
                         )}
                         <button onClick={() => dispatch(asyncLogout())}>Logout</button>

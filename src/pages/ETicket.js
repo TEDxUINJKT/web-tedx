@@ -25,10 +25,10 @@ export default function ETicket() {
 
     useEffect(() => {
         generateQR(ticket.selected?.order._id)
-        const length = ticket.selected?.ticket.bundle_status.bundle_count * ticket.selected?.order.quantity
-        for (let i = 0; i < length; i++) {
-            setTicketCount([...ticketCount,'ok'])
-          }
+        const length = ticket.selected?.ticket.bundle_status.bundle_count * ticket.selected?.order.quantity || 0
+        const empty_arr = new Array(length).fill('ok')
+
+        setTicketCount(empty_arr)
     }, [ticket])
 
     async function generateQR(data) {
