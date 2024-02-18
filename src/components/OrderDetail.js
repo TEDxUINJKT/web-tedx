@@ -1,11 +1,13 @@
+import { useState } from "react";
 import { MdLocationOn } from "react-icons/md";
+import {decrypt} from '../lib/crypto'
 
 export default function OrderDetail({ data, setData, plain }) {    
-    function setRefferal(e) {
-        const input_refferal = e.target.value
+    const [dynamicPrice, setDynamicPrice] = useState(plain?.ticket?.price)
 
-        const refferal_list = plain.ticket.refferal || []
-
+    function setRefferal(input_refferal) {
+        const refferal_list = JSON.parse(decrypt(plain.ticket.refferal)) || []
+        
         let is_available = {
             name: 'NONE',
             value: 0
@@ -17,29 +19,36 @@ export default function OrderDetail({ data, setData, plain }) {
             }
         })
 
-        if (e.target.value === '') {
-            setData({ ...data, is_refferal: false, refferal: null, total_price: data.price })
+        if (input_refferal === '') {
+            setData({ ...data, is_refferal: false, refferal: null, total_price: dynamicPrice })
         } else {
             if (is_available.value !== 0) {
-                let new_price = data.price - is_available.value
-
+                let new_price = dynamicPrice - is_available.value
+                setDynamicPrice(new_price)
                 if (new_price < 0) {
                     new_price = 0
                 }
 
                 setData({ ...data, is_refferal: true, refferal: input_refferal, total_price: new_price })
             } else {
-                setData({ ...data, is_refferal: false, refferal: null, total_price: data.price })
+                setData({ ...data, is_refferal: false, refferal: null, total_price: dynamicPrice })
             }
         }
     }
 
-    function updateQuantity(quantity){
-        if(quantity <= 0){
-            setData({ ...data, quantity:1, total_price:plain?.ticket.price })
-        }else{
-            setData({ ...data, quantity, total_price:plain?.ticket.price*quantity, total_guest:plain?.ticket?.bundle_status?.bundle_count*quantity })
+    function removeQuantity(){
+        if(data.quantity > 1){
+            const new_price = dynamicPrice - plain?.ticket?.price
+
+            setDynamicPrice(new_price)
+            setData({ ...data, quantity:data.quantity-1, total_price:new_price})
         }
+    }
+
+    function addQuantity(){
+        const new_price = dynamicPrice + plain?.ticket?.price
+        setDynamicPrice(new_price)
+        setData({ ...data, quantity:data.quantity+1, total_price:new_price })
     }
 
     return (
@@ -62,14 +71,14 @@ export default function OrderDetail({ data, setData, plain }) {
                 <div style={detail_content}>
                     <span>Quantity</span>
                     <div style={quantity_layout}>
-                        <span style={quantity_button} onClick={()=>updateQuantity(data?.quantity - 1)}>-</span>
+                        <span style={quantity_button} onClick={()=>removeQuantity()}>-</span>
                         <span>{data?.quantity}</span>
-                        <span style={quantity_button} onClick={()=>updateQuantity(data?.quantity + 1)}>+</span>
+                        <span style={quantity_button} onClick={()=>addQuantity()}>+</span>
                     </div>
                 </div>
                 <div style={detail_content}>
                     <span>Refferal Code</span>
-                    <input onChange={(e) => setRefferal(e)} value={data?.refferal} style={refereal_input} placeholder="(Optional)" />
+                    <input onChange={(e) => setRefferal(e.target.value)} value={data?.refferal} style={refereal_input} placeholder="(Optional)" />
                 </div>
             </div>
             <div style={{ ...detail_content, margin: '10px 0', fontSize: '1.2em', fontWeight: '600' }}>

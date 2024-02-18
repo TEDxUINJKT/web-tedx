@@ -5,6 +5,7 @@
   "dependencies": {
     "@reduxjs/toolkit": "^2.1.0",
     "axios": "^1.6.5",
+    "crypto-js": "^4.2.0",
     "html5-qrcode": "^2.3.8",
     "qrcode": "^1.5.3",
     "react": "^18.2.0",

@@ -13,22 +13,25 @@ export default function OrderForm({ data, setData }) {
 
     async function doPayment(e) {
         e.preventDefault();
-
-        if (acceptedTNC) {
-            const response = await api.createOrder(data)
-
-            setSnapShow(true)
-            if (response.data.status === 200) {
-                snapEmbed(response.data.snap_token, 'snap-container')
-            }else{
-                ShowError('Out Of Quota')
-                setTimeout(()=>{
-                    navigate(`/ticket`)
-                },5000)
+        try{
+            if (acceptedTNC) {
+                const response = await api.createOrder(data)
+    
+                setSnapShow(true)
+                if (response.data.status === 200) {
+                    snapEmbed(response.data.snap_token, 'snap-container')
+                }else{
+                    console.log(ShowError)
+                    ShowError('Out Of Quota')
+                }
+            } else {
+                console.log('Accept TNC First')
             }
-        } else {
-            console.log('Accept TNC First')
+        }catch(err){
+            console.log(ShowError)
+            ShowError('Out Of Quota')
         }
+        
     }
 
     function snapEmbed(snap_token, embedId) {
