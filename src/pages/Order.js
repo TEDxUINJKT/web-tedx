@@ -23,6 +23,7 @@ export default function Order() {
     useEffect(() => {
         const plain = {
             ticket_id: order?.ticket?._id,
+            event_id:order?.event?._id,
             event_name: order?.event?.event,
             user_id: auth.id,
             price: order?.ticket?.price,
