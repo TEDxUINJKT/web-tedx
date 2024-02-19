@@ -1,5 +1,6 @@
 .layout {
     width: 90%;
+    min-height: 83vh;
 }
 
 .layout table {

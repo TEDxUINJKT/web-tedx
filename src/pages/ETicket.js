@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState,useRef } from "react"
 import { useParams } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import { UserEticketDetail } from '../state/ticket/middleware'
@@ -8,12 +8,14 @@ import { IconContext } from "react-icons";
 import { MdLocationOn, MdAccessTimeFilled } from "react-icons/md";
 
 import datePrettier from "../lib/date_prettier"
+import convertToPDF from "../lib/pdfConverter"
 import moneyFormatter from "../lib/money_formater"
 
 import style from '../styles/ETicket.module.css'
 
 export default function ETicket() {
     const dispatch = useDispatch()
+    const eTicket = useRef([]);
     const [QRURL, setURL] = useState(null)
     const [ticketCount,setTicketCount] = useState([])
     const { order_id } = useParams()
@@ -25,7 +27,9 @@ export default function ETicket() {
 
     useEffect(() => {
         generateQR(ticket.selected?.order._id)
-        const length = ticket.selected?.ticket.bundle_status.bundle_count * ticket.selected?.order.quantity || 0
+        const bundle_count = ticket.selected?.ticket.bundle_status.bundle_count || 1
+
+        const length = bundle_count * ticket.selected?.order.quantity || 0
         const empty_arr = new Array(length).fill('ok')
 
         setTicketCount(empty_arr)
@@ -40,12 +44,27 @@ export default function ETicket() {
         }
     }
 
+    const addTicketRef = (ref) => {
+        if (ref && !eTicket.current?.includes(ref)) {
+            eTicket.current.push(ref);
+        }
+      };
+
+    function handleDownload() {
+        const component = eTicket.current
+
+        convertToPDF(component,ticket.selected?.event.event)
+    };
+
     return (
         <section className={style.container}>
+            <div className={style.cta_container}>
+                <button onClick={()=>handleDownload()}>Donwload E-Ticket</button>
+            </div>
             {ticketCount.map((each,index) => (
-                <div className={style.layout}>
+                <div className={style.layout} ref={addTicketRef}>
                     <div className={style.tag}>
-                        <p><b>TEDx</b>UINJakarta</p>
+                        <div className={style.tag_img}></div>
                     </div>
                     <div className={style.main_part}>
                         <div className={style.title}>

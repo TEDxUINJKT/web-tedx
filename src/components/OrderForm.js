@@ -1,12 +1,10 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom"
 import api from '../lib/api'
 import { ShowError } from '../state/error/middleware'
 
 import { Link } from 'react-router-dom'
 
 export default function OrderForm({ data, setData }) {
-    const navigate = useNavigate()
     const [snap, setSnap] = useState(null)
     const [acceptedTNC, setAcceptedTNC] = useState(false)
     const [snapShow, setSnapShow] = useState(false)
