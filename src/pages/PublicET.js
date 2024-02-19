@@ -46,8 +46,6 @@ export default function ETicket() {
         }
     }
 
-    console.log(ticket)
-
     return (
         <section className={style.container}>
             {ticketCount.map((each,index) => (
@@ -55,7 +53,7 @@ export default function ETicket() {
                     <div className={style.tag}>
                         <div className={style.tag_img}></div>
                     </div>
-                    <div className={style.main_part}>
+                    <div className={`${style.main_part} eticket-main`}>
                         <div className={style.title}>
                             <h3>{ticket?.event.event}</h3>
                         </div>
