@@ -17,6 +17,7 @@ import Order from "./pages/Order";
 import TNC from "./pages/TNC";
 import MyTicket from "./pages/MyTicket";
 import ETicket from "./pages/ETicket";
+import PublicET from './pages/PublicET'
 import Page404 from "./pages/404";
 
 
@@ -61,6 +62,8 @@ export default function AppRoutes() {
           <Route path="/ticket/:event_id" element={<DetailTicket />} />
           <Route path="/login" element={<Login />} />
           <Route path="/terms-and-conditions" element={<TNC />} />
+          <Route path="/pub/all/:order_id" element={<PublicET />} />
+
           {auth?.token === undefined ? (
             <>
               <Route path="/order/:id" element={<Login />} />

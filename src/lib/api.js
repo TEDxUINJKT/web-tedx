@@ -135,6 +135,13 @@ export default (() => {
         return response.data.data
     }
 
+    async function getETicketPublic(order_id) {
+        const url = baseUrl + `/order/pub/e-ticket/${order_id}`
+
+        const response = await axios.get(url)
+        return response.data.data
+    }
+
     return {
         getTimeline,
         getTheme,
@@ -153,6 +160,7 @@ export default (() => {
         registerUser,
         createOrder,
         getUserOrderList,
-        getETicketDetail
+        getETicketDetail,
+        getETicketPublic
     }
 })()
