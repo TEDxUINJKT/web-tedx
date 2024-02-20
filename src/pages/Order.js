@@ -30,14 +30,13 @@ export default function Order() {
             total_price: order?.ticket?.price,
             email: null,
             quantity:1,
-            ticket_name:order?.ticket?.type_ticket,
+            ticket_type:order?.ticket?.type_ticket,
             first_name: null,
             last_name: null,
             university: null,
             phone_number: null,
             is_refferal: false,
             refferal: null,
-            total_guest:order?.ticket?.bundle_status?.bundle_count
         }
         setFormData(plain)
     }, [order,auth])

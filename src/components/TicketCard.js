@@ -25,7 +25,7 @@ export default function TicketCard({ data }) {
           {ticket.status === 'Available' ?
             (
               <button onClick={() => handleOrderRedirect(ticket)} className="btn_secondary">BUY NOW</button>
-            ) : <button className="btn_disable">BUY NOW</button>}
+            ) : <button className="btn_disable">SOLD OUT</button>}
         </div>
       ))}
     </section>
