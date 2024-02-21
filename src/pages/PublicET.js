@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react"
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect, useState,useRef } from "react"
 import { useParams } from "react-router-dom"
 import QRCode from 'qrcode'
 
@@ -8,12 +9,14 @@ import { MdLocationOn, MdAccessTimeFilled } from "react-icons/md";
 import api from '../lib/api'
 
 import datePrettier from "../lib/date_prettier"
+import convertToPDF from "../lib/pdfConverter"
 import moneyFormatter from "../lib/money_formater"
 
 import style from '../styles/ETicket.module.css'
 
 export default function ETicket() {
     const [QRURL, setURL] = useState(null)
+    const eTicket = useRef([]);
     const [ticketCount,setTicketCount] = useState([])
     const [ticket, setTicket] = useState({})
     const { order_id } = useParams()
@@ -46,10 +49,25 @@ export default function ETicket() {
         }
     }
 
+    const addTicketRef = (ref) => {
+        if (ref && !eTicket.current?.includes(ref)) {
+            eTicket.current.push(ref);
+            if(eTicket.current.length === ticketCount.length){
+                handleDownload()
+            }
+        }
+    };
+
+    function handleDownload() {
+        const data = eTicket.current
+
+        convertToPDF(data,ticket?.ticket.type_ticket)
+    };
+
     return (
         <section className={style.container}>
             {ticketCount.map((each,index) => (
-                <div className={`${style.layout} ticket`} >
+                <div className={`${style.layout} ticket`} ref={addTicketRef}>
                     <div className={style.tag}>
                         <div className={style.tag_img}></div>
                     </div>

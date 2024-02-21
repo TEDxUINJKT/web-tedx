@@ -48,7 +48,7 @@ export default function ETicket() {
         if (ref && !eTicket.current?.includes(ref)) {
             eTicket.current.push(ref);
         }
-      };
+    };
 
     function handleDownload() {
         const component = eTicket.current
