@@ -187,10 +187,6 @@ input::placeholder {
   padding: 100px 0 0 0;
 }
 
-.eticket-main{
-  background-image: url('https://res.cloudinary.com/dnbtkwgwz/image/upload/v1708345603/nbhwleltxk8doqbtqxzu.png');
-}
-
 @keyframes glitch {
   0% {
     text-shadow: 0.05em 0 0 #00fffc, -0.03em -0.04em 0 #fc00ff,
@@ -235,12 +231,6 @@ input::placeholder {
 
   .mobile {
     display: block;
-  }
-}
-
-@media only screen and (max-width:850px){
-  .eticket-main{
-    background-image: url('https://res.cloudinary.com/dnbtkwgwz/image/upload/v1708345519/hq1u5tpzh3edqvwrltna.png');
   }
 }
 

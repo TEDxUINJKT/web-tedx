@@ -9,13 +9,22 @@ const convertToPDF = (datas, type = null) => {
         const canvas = await html2canvas(data, { scale: 1})
         const imgData = canvas.toDataURL('image/webp', 1)
 
-        const ratio = parseInt(canvas.style.width)/parseInt(canvas.style.height)
+        let ratio = parseInt(canvas.style.width)/parseInt(canvas.style.height)
 
-        const imgOptions = {
-                    width: pdf.internal.pageSize.getWidth(), // Sesuaikan lebar dengan lebar halaman PDF
-                    height: pdf.internal.pageSize.getWidth()/ratio // Sesuaikan tinggi dengan tinggi halaman PDF
-                };
+        let imgOptions = {
+            width: pdf.internal.pageSize.getWidth(), // Sesuaikan lebar dengan lebar halaman PDF
+            height: pdf.internal.pageSize.getWidth()/ratio // Sesuaikan tinggi dengan tinggi halaman PDF
+        };
 
+        if(parseInt(canvas.style.width)<parseInt(canvas.style.height)){
+            ratio = parseInt(canvas.style.height)/parseInt(canvas.style.width)
+
+            imgOptions = {
+                width: pdf.internal.pageSize.getWidth()/2, // Sesuaikan lebar dengan lebar halaman PDF
+                height: (pdf.internal.pageSize.getWidth()*ratio)/2 // Sesuaikan tinggi dengan tinggi halaman PDF
+            };
+        }
+        
         pdf.addImage(imgData, 'PNG', 0, 0, imgOptions.width, imgOptions.height)
 
         pdf.save(`${type} E-Ticket (${index+1})`)
