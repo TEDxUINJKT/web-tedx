@@ -78,6 +78,16 @@
         gap: 0;
     }
 
+    .ticket_card p {
+        font-size: 1em;
+        text-align: justify;
+    }
+    
+    .price_tag {
+        margin: 20px 0;
+        font-size: 3em;
+    }
+
     .ticket_card h5 {
         font-size: 5em;
     }

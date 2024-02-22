@@ -75,7 +75,7 @@ export default function OrderForm({ data, setData }) {
                         <span>Make sure you are already read the <Link to="/terms-and-conditions" style={tnc_link}>terms and conditions</Link></span>
                     </div>
                     <div style={tnc}>
-                        <span>Have any problem? Please <a href="https://wa.me/6281210696745" style={tnc_link}>contact us</a></span>
+                        <span>Have any problem? Please <a href="https://wa.me/6288805466884" style={tnc_link}>contact us</a></span>
                     </div>
                     <div>
                         <button type="submit" className={acceptedTNC ? 'btn_secondary' : 'btn_disable'}>PAY NOW</button>
